@@ -1,5 +1,9 @@
 function showMessage(response) {
+  const noAudio = document.getElementById("noAudio");
+  const yesAudio = document.getElementById("yesAudio");
+
   if (response === "No") {
+    noAudio.play();
     const noButton = document.getElementById("no-button");
     const container = document.querySelector(".container");
     const maxWidth = window.innerWidth - noButton.offsetWidth;
@@ -28,6 +32,8 @@ function showMessage(response) {
   }
 
   if (response === "Yes") {
+    noAudio.currentTime = 0;
+    noAudio.pause();
     // Remove name message and no button
     document.getElementById("name").remove();
     document.getElementById("no-button").remove();
@@ -41,5 +47,6 @@ function showMessage(response) {
 
     // Remove yes button
     document.getElementById("yesButton").remove();
+    yesAudio.play();
   }
 }
